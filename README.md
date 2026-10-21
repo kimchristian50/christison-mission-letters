@@ -1,5 +1,4 @@
-# Letters from Sister Zoe
-
+# Letters from Sister Christison
 A simple website for Zoe's weekly mission emails, with a signup form that emails you each new subscriber's address. Every letter is a plain text file. There is no database and nothing to log into except GitHub and Netlify.
 
 **How it fits together**
