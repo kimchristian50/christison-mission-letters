@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------
-   Letters from Sister Zoe
+   Letters from Sister Christison
    Dark Florida palette: the deep blue-green of a spring at dusk,
    palmetto green, and the clear teal of spring water.
    To change a color, change it here and it updates everywhere.
@@ -10,11 +10,26 @@
   --shade-2: #173539;     /* borders, hover */
   --ink: #e3eee8;         /* main text */
   --ink-soft: #a3bfb6;    /* quieter text */
+  --lighter-spring: #83e9f2;
   --spring: #5cc3cc;      /* links */
   --palm: #7cc596;        /* buttons, highlights */
   --palm-deep: #2b6b52;
   --gulf: #1d5560;
 
+      --deep: #0c1d22;          /* page background */
+        --deep: #0d3b66;          /* page background */
+        --shade: #055259;         /* raised areas */
+        --shade-2: #173539;         /* borders, hover */
+        --ink: #faf3d7;         /* main text */
+        --ink-soft: #bbc9c4;         /* quieter text */
+        --spring: #5cc3cc;         /* links */
+        --palm: #ee964b;         /* buttons, highlights */
+        --palm-deep: #f95738;
+        --gulf: #619b8a;
+
+
+
+              
   --serif: "Literata", Georgia, "Times New Roman", serif;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -86,7 +101,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, var(--deep) 0%, #10303a 70%, #133a40 100%);
+  background: linear-gradient(180deg, var(--deep) 0%, var(--shade) 70%, var(--shade-2) 100%);
   padding-bottom: clamp(5rem, 12vw, 9rem);
   overflow: hidden;
 }
@@ -324,7 +339,7 @@ a:hover { text-decoration-thickness: 2px; }
   text-decoration: none;
   cursor: pointer;
 }
-.button:hover, .subscribe button:hover { background: #95d4aa; }
+.button:hover, .subscribe button:hover { background: var(--lighter-spring); }
 .button--quiet {
   background: transparent;
   color: var(--spring);
@@ -335,7 +350,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* ---------- Signup ---------- */
 .subscribe {
   margin-top: 3rem;
-  background: linear-gradient(160deg, #123a37 0%, #10303a 100%);
+  background: linear-gradient(160deg, var(--shade-2) 0%, var(--gulf) 100%);
   border-top: 1px solid var(--shade-2);
 }
 .subscribe__inner {
@@ -363,13 +378,13 @@ a:hover { text-decoration-thickness: 2px; }
   font: inherit;
   font-size: 1.05rem;
   color: var(--ink);
-  background: rgba(12, 29, 34, 0.7);
-  border: 1px solid #2d5a5c;
+  background: var(--shade);
+  border: 1px solid var(--gulf);
   border-radius: 8px;
   padding: 0.75rem 0.9rem;
   width: 100%;
 }
-.field input::placeholder { color: #6f8f88; }
+.field input::placeholder { color: var(--ink-soft); }
 .field input:focus { border-color: var(--spring); outline: none; box-shadow: 0 0 0 3px rgba(92, 195, 204, 0.3); }
 .subscribe button { justify-self: start; }
 .hidden-field { position: absolute; left: -9999px; }

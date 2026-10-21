@@ -1,8 +1,8 @@
 ---
-title: Write a title for this week here
-date: 2026-10-26
-week: 4
-area: Gainesville
+title: Week 12-- Winners of the Donut
+date: 2026-07-21
+week: 12
+area: Ocala
 photos:
   - file: 2026-10-26/first-photo.jpg
     caption: A short caption

@@ -1,0 +1,61 @@
+     --deep: #0c1d22;
+     /* page background */
+     --deep: #0d3b66;
+     /* page background */
+     --shade: #055259;
+     /* raised areas */
+     --shade-2: #173539;
+     /* borders, hover */
+     --ink: #faf3d7;
+     /* main text */
+     --ink-soft: #bbc9c4;
+     /* quieter text */
+     --spring: #5cc3cc;
+     /* links */
+     --palm: #ee964b;
+     /* buttons, highlights */
+     --palm-deep: #f95738;
+     --gulf: #619b8a;
+
+     --deep: #0c1d22;
+     /* page background */
+     --deep: #23395b;
+     /* page background */
+     --shade: #406e8e;
+     /* raised areas */
+     --shade-2: #377771;
+     /* borders, hover */
+     --ink: #faf3d7;
+     /* main text */
+     --ink-soft: #bbc9c4;
+     /* quieter text */
+     --spring: #06bee1;
+     /* links */
+     --palm: #ffaf87;
+     /* buttons, highlights */
+     --palm-deep: #ed6a5e;
+     --gulf: #ff8e72;
+
+     --deep: #faf5e2;
+     /* page background */
+     --shade: #faf0ca;
+     /* raised areas */
+     --shade-2: #fcca89;
+     /* borders, hover */
+     --ink: #293241;
+     /* main text */
+     --ink-soft: #3d5a80;
+     /* quieter text */
+     --spring: #06bee1;
+     /* links */
+     --palm: #f4d35e;
+     /* buttons, highlights */
+     --palm-deep: #f95738;
+     --gulf: #ee964b;
+
+         .hero {
+             position: relative;
+             background: linear-gradient(180deg, var(--deep) 0%, #10303a 70%, #133a40 100%);
+             padding-bottom: clamp(5rem, 12vw, 9rem);
+             overflow: hidden;
+         }
