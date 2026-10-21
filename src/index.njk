@@ -1,0 +1,58 @@
+---
+layout: base.njk
+title: Letters from Sister Zoe
+---
+{% set letters = collections.letters | newestFirst %}
+{% set latest = letters[0] %}
+
+<section class="hero">
+  <div class="hero__text">
+    <h1 class="hero__title">{{ site.title }}</h1>
+    <p class="hero__mission">Serving in the {{ site.mission }}</p>
+    <p class="hero__intro">{{ site.intro }}</p>
+  </div>
+  <svg class="hero__water" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0 70 C150 40 300 100 450 70 S750 40 900 70 S1100 95 1200 64 V160 H0Z"/>
+    <path class="w2" d="M0 96 C170 70 320 122 480 96 S760 66 920 96 S1110 118 1200 92 V160 H0Z"/>
+    <path class="w3" d="M0 122 C160 102 330 142 500 122 S780 100 940 122 S1120 140 1200 118 V160 H0Z"/>
+  </svg>
+</section>
+
+{% if latest %}
+<section class="latest" aria-labelledby="latest-heading">
+  <h2 class="section-title" id="latest-heading">This week's letter</h2>
+  <a class="latest__card" href="{{ latest.url }}">
+    {% if latest.data.photos and latest.data.photos.length %}
+    <img class="latest__photo" src="/photos/{{ latest.data.photos[0].file }}" alt="{{ latest.data.photos[0].caption or '' }}">
+    {% endif %}
+    <div class="latest__text">
+      <p class="latest__when">
+        {% if latest.data.week %}Week {{ latest.data.week }}, {% endif %}{{ latest.date | longDate }}
+      </p>
+      <h3 class="latest__title">{{ latest.data.title }}</h3>
+      <p class="latest__excerpt">{{ latest.content | excerpt(260) }}</p>
+      <span class="latest__more">Read the full letter</span>
+    </div>
+  </a>
+</section>
+
+<section class="archive" id="letters" aria-labelledby="archive-heading">
+  <h2 class="section-title" id="archive-heading">Every letter</h2>
+  <ol class="timeline" reversed>
+    {% for letter in letters %}
+    <li class="timeline__item">
+      <a class="timeline__link" href="{{ letter.url }}">
+        <span class="timeline__week">{% if letter.data.week %}Week {{ letter.data.week }}{% else %}&nbsp;{% endif %}</span>
+        <span class="timeline__title">{{ letter.data.title }}</span>
+        <time class="timeline__date" datetime="{{ letter.date | isoDate }}">{{ letter.date | longDate }}</time>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% else %}
+<section class="empty">
+  <h2>Her first letter is on its way</h2>
+  <p>Sign up below and you'll get it in your inbox, then find every letter here afterward.</p>
+</section>
+{% endif %}

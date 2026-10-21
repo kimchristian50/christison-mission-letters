@@ -1,0 +1,27 @@
+{# The signup form. Netlify spots data-netlify="true" when the site is
+   published and emails each new address to whoever is set up under
+   Forms > Form notifications in the Netlify dashboard. #}
+<section class="subscribe" id="subscribe" aria-labelledby="subscribe-heading">
+  <div class="subscribe__inner">
+    <h2 id="subscribe-heading">Get her weekly email</h2>
+    <p>Leave your email address and {{ site.missionaryName }} will add you to her mailing list. Her letters usually go out on P-day.</p>
+
+    <form class="subscribe__form" name="subscribe" method="POST" action="/thanks/"
+          data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="subscribe">
+      <p class="hidden-field" aria-hidden="true">
+        <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label>
+      </p>
+
+      <div class="field">
+        <label for="sub-name">Your name</label>
+        <input id="sub-name" name="name" type="text" autocomplete="name" placeholder="So she knows who you are">
+      </div>
+      <div class="field">
+        <label for="sub-email">Email address</label>
+        <input id="sub-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </div>
+      <button type="submit">Add me to her list</button>
+    </form>
+  </div>
+</section>

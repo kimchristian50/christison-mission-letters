@@ -1,0 +1,56 @@
+---
+layout: base.njk
+---
+{% set prev = collections.letters | getPreviousCollectionItem %}
+{% set next = collections.letters | getNextCollectionItem %}
+
+<article class="letter">
+  <header class="letter__head">
+    <p class="letter__when">
+      {% if week %}Week {{ week }}, {% endif %}<time datetime="{{ page.date | isoDate }}">{{ page.date | longDate }}</time>
+      {% if area %}<span class="letter__area">in {{ area }}</span>{% endif %}
+    </p>
+    <h1>{{ title }}</h1>
+  </header>
+
+  <div class="letter__body prose">
+    {{ content | safe }}
+  </div>
+
+  {% if photos and photos.length %}
+  <section class="photos" aria-labelledby="photos-heading">
+    <h2 id="photos-heading">Photos from this week</h2>
+    <div class="photos__grid{% if photos.length == 1 %} photos__grid--single{% endif %}">
+      {% for photo in photos %}
+      <figure class="photo">
+        <a href="/photos/{{ photo.file }}" target="_blank" rel="noopener" aria-label="Open full-size photo{% if photo.caption %}: {{ photo.caption }}{% endif %}">
+          <img src="/photos/{{ photo.file }}" alt="{{ photo.caption or 'Photo from ' + title }}">
+        </a>
+        {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if album %}
+  <p class="album-link">
+    <a class="button button--quiet" href="{{ album }}" target="_blank" rel="noopener">See the whole album on Google Photos</a>
+  </p>
+  {% endif %}
+</article>
+
+<nav class="pager" aria-label="More letters">
+  {% if prev %}
+  <a class="pager__link pager__link--prev" href="{{ prev.url }}">
+    <span class="pager__label">Older letter</span>
+    <span class="pager__title">{{ prev.data.title }}</span>
+  </a>
+  {% else %}<span></span>{% endif %}
+  {% if next %}
+  <a class="pager__link pager__link--next" href="{{ next.url }}">
+    <span class="pager__label">Newer letter</span>
+    <span class="pager__title">{{ next.data.title }}</span>
+  </a>
+  {% endif %}
+</nav>
