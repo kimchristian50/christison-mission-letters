@@ -1,11 +1,12 @@
-# Letters from Sister Christison
-A simple website for Zoe's weekly mission emails, with a signup form that emails you each new subscriber's address. Every letter is a plain text file. There is no database and nothing to log into except GitHub and Netlify.
+# Letters from Sister Zoe
+
+A simple website for Zoe's weekly mission emails, with a signup form that emails Zoe each new subscriber's address. Every letter is a plain text file. There is no database and nothing to log into except GitHub and Netlify (plus a free Web3Forms key for the signup form).
 
 **How it fits together**
 
 - `src/letters/` holds one Markdown file per weekly letter.
 - `src/photos/` holds the photos, one folder per week.
-- `src/_data/site.json` holds her name, mission, and the intro text on the home page.
+- `src/_data/site.json` holds her name, mission, the intro text on the home page, the site address, and the signup form key.
 - Eleventy turns those files into the website. Netlify hosts it for free and rebuilds it every time you change a file on GitHub.
 
 ---
@@ -38,11 +39,14 @@ Then delete the three sample letters in `src/letters/` (the files starting with 
 
 ### 4. Turn on the signup emails
 
-1. In Netlify, open **Forms** and click **Enable form detection**. Then go to **Deploys** and click **Trigger deploy → Deploy project** so Netlify finds the form.
-2. Go to **Project configuration → Notifications → Emails and webhooks → Form submission notifications**, click **Add notification → Email notification**, choose the `subscribe` form, and enter Zoe's mission email address.
-3. Test it: sign up on the live site with your own email. Zoe should get a message with the name and address within a minute. The reply-to is set to the subscriber, so she can reply to them directly.
+The signup form uses Web3Forms, a free service (250 signups a month) that emails each signup to one address.
 
-Every signup is also saved under **Forms → subscribe** in Netlify, so you have a backup list if an email gets lost. Spam signups are filtered automatically.
+1. Go to web3forms.com, enter the email address that should receive the signups (Zoe's), and request an access key. The key is emailed to that address, so whoever reads that inbox will need to pass it along to you.
+2. Open `src/_data/site.json` and paste the key in place of `PASTE-YOUR-ACCESS-KEY-HERE`. The key is safe to have on a public site; it can only send signups to that one address.
+3. In the same file, set `url` to the site's real web address, like `https://sister-zoe.netlify.app` (no slash at the end). This is how the form knows where the "You're on the list" page is.
+4. Commit the change, wait for Netlify to finish deploying, then test it: sign up on the live site with your own email. Zoe should get a message with the name and address within a minute or two. The reply-to is set to the subscriber, so she can reply to them directly.
+
+Spam is filtered with a hidden trap field. If a signup email doesn't arrive, check the spam folder and mark it "not spam" once.
 
 ---
 
@@ -59,7 +63,7 @@ Every signup is also saved under **Forms → subscribe** in Netlify, so you have
 | Line | What it does | Required? |
 |---|---|---|
 | `title:` | The letter's headline | Yes |
-| `date:` | Written as `YYYY-MM-DD`. Letters are sorted by this | Yes |
+| `date:` | Written as `YYYY-MM-DD`, always with two-digit months and days: `2026-10-07`, not `2026-10-7`. Letters are sorted by this | Yes |
 | `week:` | Shows "Week 4" | No |
 | `area:` | Shows "in Gainesville" | No |
 | `photos:` | The photo gallery (see below) | No |
@@ -114,4 +118,4 @@ All colors live at the top of `src/css/style.css`, with a comment beside each on
 
 - **The site didn't update.** In Netlify, open **Deploys**. A red "Failed" deploy means something in the newest file has a typo. Click it and scroll to the end of the log; it usually names the file and line. The most common culprits are a missing `---` line, a title with a colon that isn't in quotes, or a photo filename that doesn't match the file you uploaded (capital letters count: `Beach.JPG` is not `beach.jpg`).
 - **A photo doesn't show.** Check the spelling and folder name in the `file:` line.
-- **No signup emails.** Check that form detection is on, that you redeployed after turning it on, and that the notification uses the right address. Also check spam.
+- **No signup emails.** Check that the access key in `src/_data/site.json` is pasted exactly, with the quotes around it still in place. Also check the spam folder. If people land on an error page after signing up, check the `url` in the same file.

@@ -1,17 +1,16 @@
-{# The signup form. Netlify spots data-netlify="true" when the site is
-   published and emails each new address to whoever is set up under
-   Forms > Form notifications in the Netlify dashboard. #}
+{# The signup form. Submissions go to Web3Forms, which emails each new
+   address to whoever the access key in src/_data/site.json belongs to. #}
 <section class="subscribe" id="subscribe" aria-labelledby="subscribe-heading">
   <div class="subscribe__inner">
     <h2 id="subscribe-heading">Get her weekly email</h2>
-    <p>Leave your email address and {{ site.missionaryName }} will add you to her mailing list. Her letters usually go out on Wednesdays.</p>
+    <p>Leave your email address and {{ site.missionaryName }} will add you to her mailing list. Her letters usually go out on P-day.</p>
 
-    <form class="subscribe__form" name="subscribe" method="POST" action="/thanks/"
-          data-netlify="true" netlify-honeypot="company">
-      <input type="hidden" name="form-name" value="subscribe">
-      <p class="hidden-field" aria-hidden="true">
-        <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label>
-      </p>
+    <form class="subscribe__form" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="{{ site.web3formsKey }}">
+      <input type="hidden" name="subject" value="New signup for your mission email list">
+      <input type="hidden" name="from_name" value="{{ site.title }}">
+      <input type="hidden" name="redirect" value="{{ site.url }}/thanks/">
+      <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="field">
         <label for="sub-name">Your name</label>
