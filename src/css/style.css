@@ -16,20 +16,7 @@
   --palm-deep: #2b6b52;
   --gulf: #1d5560;
 
-      --deep: #0c1d22;          /* page background */
-        --deep: #0d3b66;          /* page background */
-        --shade: #055259;         /* raised areas */
-        --shade-2: #173539;         /* borders, hover */
-        --ink: #faf3d7;         /* main text */
-        --ink-soft: #bbc9c4;         /* quieter text */
-        --spring: #5cc3cc;         /* links */
-        --palm: #ee964b;         /* buttons, highlights */
-        --palm-deep: #f95738;
-        --gulf: #619b8a;
-
-
-
-              
+         
   --serif: "Literata", Georgia, "Times New Roman", serif;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 
